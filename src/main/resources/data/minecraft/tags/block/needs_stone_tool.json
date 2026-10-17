@@ -1,13 +1,6 @@
 {
   "replace": false,
   "values": [
-    "aeronautics_utility_objects:universal_joint",
-    "aeronautics_utility_objects:brass_universal_joint",
-    "aeronautics_utility_objects:hydraulic_connection_head",
-    "aeronautics_utility_objects:hydraulic_hinge_head",
-    "aeronautics_utility_objects:brass_hydraulic_hinge_head",
-    "aeronautics_utility_objects:hydraulic_regulator",
-    "aeronautics_utility_objects:damping_stress_bearing"
+    "aeronautics_utility_objects:brass_universal_joint"
   ]
 }
-

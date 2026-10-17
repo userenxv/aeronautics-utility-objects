@@ -1,7 +1,0 @@
-{
-  "parent": "aeronautics_utility_objects:item/hydraulic_rod",
-  "textures": {
-    "0": "aeronautics_utility_objects:block/creative_hydraulic_rod",
-    "particle": "aeronautics_utility_objects:block/creative_hydraulic_rod"
-  }
-}

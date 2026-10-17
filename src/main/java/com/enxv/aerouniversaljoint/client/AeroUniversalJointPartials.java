@@ -15,22 +15,6 @@ public final class AeroUniversalJointPartials {
             block("universal_joint_link_sleeve");
     public static final PartialModel BRASS_UNIVERSAL_JOINT_HEAD =
             block("brass_universal_jointhead");
-    public static final PartialModel HYDRAULIC_ROD =
-            block("hydraulic_rod");
-    public static final PartialModel CREATIVE_HYDRAULIC_ROD =
-            block("creative_hydraulic_rod");
-    public static final PartialModel GIANT_HYDRAULIC_ROD_FIXED =
-            block("giant_hydraulic_rod_fixed");
-    public static final PartialModel GIANT_HYDRAULIC_ROD_THICK =
-            block("giant_hydraulic_rod_thick");
-    public static final PartialModel GIANT_HYDRAULIC_ROD_MEDIUM =
-            block("giant_hydraulic_rod_medium");
-    public static final PartialModel GIANT_HYDRAULIC_ROD_THIN =
-            block("giant_hydraulic_rod_thin");
-    public static final PartialModel HYDRAULIC_HINGE_SLEEVE =
-            block("hydraulic_hinge_sleeve");
-    public static final PartialModel DAMPING_STRESS_BEARING_HEAD =
-            block("damping_stress_bearing_head");
 
     private AeroUniversalJointPartials() {
     }

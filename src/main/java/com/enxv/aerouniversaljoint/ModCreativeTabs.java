@@ -18,16 +18,8 @@ public final class ModCreativeTabs {
                     .icon(() -> ModItems.UNIVERSAL_JOINT_ROD.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BRASS_UNIVERSAL_JOINT.get());
-                        output.accept(ModItems.HYDRAULIC_CONNECTION_HEAD.get());
-                        output.accept(ModItems.HYDRAULIC_HINGE_HEAD.get());
-                        output.accept(ModItems.BRASS_HYDRAULIC_HINGE_HEAD.get());
-                        output.accept(ModItems.HYDRAULIC_REGULATOR.get());
                         output.accept(ModItems.UNIVERSAL_JOINT_ROD.get());
                         output.accept(ModItems.ANDESITE_UNIVERSAL_JOINT_ROD.get());
-                        output.accept(ModItems.HYDRAULIC_ROD.get());
-                        output.accept(ModItems.CREATIVE_HYDRAULIC_ROD.get());
-                        output.accept(ModItems.GIANT_HYDRAULIC_ROD.get());
-                        output.accept(ModItems.DAMPING_STRESS_BEARING.get());
                     })
                     .build());
 

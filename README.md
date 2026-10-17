@@ -1,6 +1,23 @@
 # Create Aeronautics: Transmission & Linkage
 
-Adds universal joints, hydraulic links, and kinetic conversion bearings for Aeronautics structures.
+Adds universal joints for linking Aeronautics structures and passing rotation across the link.
+
+This is a trimmed fork of the original mod by enxv233. It keeps only the universal joint transmission:
+
+- **Universal Joint Head** (`brass_universal_joint`)
+- **Andesite Universal Joint Rod** (`universal_joint_rod2`): long link, up to 15 blocks
+- **Brass Universal Joint Rod** (`universal_joint_rod`): short elastic link
+
+The legacy universal joint head, all pneumatic/hydraulic content, and the kinetic conversion bearing were removed.
+
+## Config
+
+Settings are in `config/aeronautics_utility_objects-common.toml`. The file is created on first launch, applies to
+every world, and is reloaded when you save it. Under `[universal_joint]`:
+
+- `stress_impact`: stress cost of each joint head, in SU per RPM (default 2.0, 0 disables it). A linked pair counts
+  both heads.
+- `[universal_joint.andesite]` / `[universal_joint.brass]`: link range, stretch limits, and pull stiffness/damping.
 
 ## Requirements
 
@@ -20,7 +37,7 @@ Use JDK 21.
 .\gradlew.bat build --offline --no-daemon --console=plain
 ```
 
-`check` also runs source-level compatibility and physics-control regression checks. The adjacent
+`check` also runs a source-level compatibility regression check. The adjacent
 `aeronautics_structure_tool` project is intentionally not coupled to implementation classes; verify its
 compatibility with:
 
@@ -38,11 +55,11 @@ classes. The maintained contract is documented in
 
 ## Architecture
 
-The Sable constraint and assembly-move lifecycle is documented in
-[docs/architecture/sable-constraint-lifecycle.md](docs/architecture/sable-constraint-lifecycle.md).
+The assembly-move lifecycle is documented in
+[docs/architecture/assembly-move-lifecycle.md](docs/architecture/assembly-move-lifecycle.md).
 Ownership boundaries for the main runtime components are documented in
 [docs/architecture/component-ownership.md](docs/architecture/component-ownership.md).
 
 ## License
 
-CC BY-NC 4.0. See [LICENSE](LICENSE).
+CC BY-NC 4.0. See [LICENSE](LICENSE). Original work by enxv233; this fork removes content and changes the config as described above.

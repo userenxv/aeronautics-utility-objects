@@ -4,24 +4,32 @@ The following values are externally consumed and must remain stable across inter
 
 ## Registry identifiers
 
-- `aeronautics_utility_objects:universal_joint`
-- `aeronautics_utility_objects:hydraulic_connection_head`
+- Block / item: `aeronautics_utility_objects:brass_universal_joint` (the Universal Joint Head)
+- Items: `aeronautics_utility_objects:universal_joint_rod` (brass rod), `aeronautics_utility_objects:universal_joint_rod2` (andesite rod)
+- Block entity: `aeronautics_utility_objects:universal_joint`
+- Menu: `aeronautics_utility_objects:universal_joint`
 
 `create_aeronautics_toolgun` identifies these block entities by registry id when saving and placing blueprints.
 
+The legacy `aeronautics_utility_objects:universal_joint` block, the pneumatic/hydraulic blocks and items, and the
+kinetic conversion bearing were removed. Worlds that contain them will report them as missing.
+
 ## Persistent link format
 
-Linked universal joints and hydraulic heads persist their partner through these NBT keys:
+Linked universal joints persist their partner through these NBT keys:
 
 - `LinkedPos`: partner position, encoded as a normal NBT block position.
 - `LinkedSubLevel`: optional partner sub-level UUID.
 
-The keys and their coordinate meaning are part of the blueprint compatibility contract. Internal state may be reorganized, but a loaded legacy tag must retain the same effective link.
+The keys and their coordinate meaning are part of the blueprint compatibility contract. Internal state may be
+reorganized, but a loaded legacy tag must retain the same effective link.
 
-## Runtime Hinge State
+## Config
 
-`HingeSubLevel`, `HingeLinkPos`, `HingeParentSubLevel`, and `HingeOwnerPos` are internal runtime recovery data for hinged hydraulic heads. They are not blueprint references. A copied endpoint verifies that its recorded hinge parent and owner position match its current assembly before using those fields; on a mismatch it discards only its local reference and creates a new hinge assembly. It never removes the referenced sub-level, because that resource may belong to an already loaded structure. Legacy runtime data without `HingeOwnerPos` is rebuilt once after loading.
+Settings live in the common config file `config/aeronautics_utility_objects-common.toml`, shared by every world.
+`universal_joint.stress_impact` is registered with Create's `BlockStressValues.IMPACTS` for the joint head.
 
 ## Network and player-facing identifiers
 
-Keep the existing menu ids, payload ids, translation keys, item ids, and block ids. Changes to implementation packages are allowed when public entry points and serialized data remain compatible.
+Keep the existing menu ids, payload ids, translation keys, item ids, and block ids. Changes to implementation
+packages are allowed when public entry points and serialized data remain compatible.

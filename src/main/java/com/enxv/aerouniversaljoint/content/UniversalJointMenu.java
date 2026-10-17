@@ -51,8 +51,7 @@ public class UniversalJointMenu extends AbstractContainerMenu implements Contain
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, ModBlocks.UNIVERSAL_JOINT.get())
-                || stillValid(this.access, player, ModBlocks.BRASS_UNIVERSAL_JOINT.get());
+        return stillValid(this.access, player, ModBlocks.BRASS_UNIVERSAL_JOINT.get());
     }
 
     @Override

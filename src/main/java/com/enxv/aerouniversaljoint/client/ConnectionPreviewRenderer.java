@@ -1,11 +1,7 @@
 package com.enxv.aerouniversaljoint.client;
 
-import com.enxv.aerouniversaljoint.content.HydraulicConnectionHeadBlockEntity;
-import com.enxv.aerouniversaljoint.content.HydraulicConnectionHeadRenderer;
-import com.enxv.aerouniversaljoint.content.HydraulicRodItem;
 import com.enxv.aerouniversaljoint.content.JointBindingData;
 import com.enxv.aerouniversaljoint.content.JointVariant;
-import com.enxv.aerouniversaljoint.content.PendingHydraulicSelections;
 import com.enxv.aerouniversaljoint.content.PendingRodSelections;
 import com.enxv.aerouniversaljoint.content.UniversalJointBlockEntity;
 import com.enxv.aerouniversaljoint.content.UniversalJointRenderer;
@@ -65,12 +61,6 @@ public final class ConnectionPreviewRenderer {
                     renderUniversalPreview(level, event, selection.selection(), hit, rodItem.isBrass(), partialTicks));
             return;
         }
-        if (held.getItem() instanceof HydraulicRodItem rodItem) {
-            PendingHydraulicSelections.readClient(player).ifPresent(selection ->
-                    renderHydraulicPreview(level, event, selection, hit,
-                            rodItem.isCreative() || selection.creativeHydraulic(),
-                            rodItem.isGiant() || selection.giantHydraulic(), partialTicks));
-        }
     }
 
     private static void renderUniversalPreview(Level level, RenderLevelStageEvent event, JointBindingData.Selection selection,
@@ -108,41 +98,6 @@ public final class ConnectionPreviewRenderer {
                         color, partialTicks));
     }
 
-    private static void renderHydraulicPreview(Level level, RenderLevelStageEvent event, JointBindingData.Selection selection,
-                                               BlockHitResult hit, boolean creative, boolean giant, float partialTicks) {
-        BlockEntity startBlockEntity = resolve(level, selection);
-        if (!(startBlockEntity instanceof HydraulicConnectionHeadBlockEntity start)
-                || !level.dimension().location().equals(selection.dimensionId())) {
-            return;
-        }
-
-        BlockPos targetPos = hit.getBlockPos();
-        BlockEntity targetBlockEntity = SubLevelReferenceHelper.resolveBlockEntity(level, targetPos, null);
-        Vec3 startCenter = projectedCenter(start, partialTicks);
-        Vec3 targetCenter = targetBlockEntity != null
-                ? projectedCenter(targetBlockEntity, partialTicks)
-                : projectedBlockCenter(level, targetPos, partialTicks);
-        boolean beyondWarningLimit = isBeyondWarningLimit(startCenter, targetCenter, HydraulicConnectionHeadBlockEntity.getMaxLinkLength());
-        PreviewState state = PreviewState.NEUTRAL;
-        if (beyondWarningLimit) {
-            state = PreviewState.INVALID;
-        } else if (targetBlockEntity instanceof HydraulicConnectionHeadBlockEntity target) {
-            HydraulicConnectionHeadBlockEntity.LinkResult result = target.previewLinkToSelection(selection);
-            state = result == HydraulicConnectionHeadBlockEntity.LinkResult.SUCCESS
-                    ? PreviewState.VALID
-                    : result == HydraulicConnectionHeadBlockEntity.LinkResult.TOO_FAR ? PreviewState.NEUTRAL : PreviewState.INVALID;
-        }
-
-        boolean targetIsConnectionHead = isConnectionHead(targetBlockEntity);
-        Vec3 endAnchor = targetIsConnectionHead ? targetCenter : projectedFaceCenter(level, targetBlockEntity, hit, partialTicks);
-        Vec3 startAnchor = targetIsConnectionHead ? startCenter : projectedSurfaceToward(start, endAnchor, partialTicks);
-        Color color = colorFor(state);
-        renderInWorld(event, startAnchor, endAnchor, buffer ->
-                HydraulicConnectionHeadRenderer.renderPreview(start, startAnchor, endAnchor,
-                        event.getPoseStack(), buffer, LightTexture.FULL_BRIGHT,
-                        color, partialTicks, creative, giant));
-    }
-
     private static void renderInWorld(RenderLevelStageEvent event, Vec3 start, Vec3 end, Renderer renderer) {
         if (start.distanceToSqr(end) < 1.0E-6D) {
             return;
@@ -174,8 +129,7 @@ public final class ConnectionPreviewRenderer {
     }
 
     private static boolean isConnectionHead(@Nullable BlockEntity blockEntity) {
-        return blockEntity instanceof UniversalJointBlockEntity
-                || blockEntity instanceof HydraulicConnectionHeadBlockEntity;
+        return blockEntity instanceof UniversalJointBlockEntity;
     }
 
     @Nullable

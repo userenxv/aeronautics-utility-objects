@@ -1,9 +1,7 @@
 package com.enxv.aerouniversaljoint;
 
 import com.enxv.aerouniversaljoint.content.PendingRodSelections;
-import com.enxv.aerouniversaljoint.content.PendingHydraulicSelections;
 import com.enxv.aerouniversaljoint.content.RecentMoveRemapper;
-import com.enxv.aerouniversaljoint.content.HingeAssemblyOrphanCleaner;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
@@ -41,20 +39,14 @@ public final class AeroUniversalJointCommonEvents {
 
     private static void onServerTick(ServerTickEvent.Post event) {
         RecentMoveRemapper.pruneExpired(event.getServer().overworld().getGameTime());
-        if (event.getServer().overworld().getGameTime() % 100 == 0) {
-            HingeAssemblyOrphanCleaner.cleanup(event.getServer());
-        }
     }
 
     private static void onServerStopped(ServerStoppedEvent event) {
         RecentMoveRemapper.clear();
-        HingeAssemblyOrphanCleaner.clear();
     }
 
     private static void clearSelections(net.minecraft.world.entity.player.Player player) {
         PendingRodSelections.clear(player);
         PendingRodSelections.clearClient(player);
-        PendingHydraulicSelections.clear(player);
-        PendingHydraulicSelections.clearClient(player);
     }
 }

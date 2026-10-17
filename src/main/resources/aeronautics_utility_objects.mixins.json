@@ -5,12 +5,10 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "KineticBlockEntityTickMixin",
-    "KineticEffectHandlerMixin",
-    "SwivelBearingBlockEntityAccessor",
-    "SwivelBearingCogwheelBlockEntityMixin",
-    "SwivelBearingPlateBlockEntityMixin"
+    "KineticEffectHandlerMixin"
   ],
-  "client": [
-    "BlockRenderDispatcherMixin"
-  ]
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

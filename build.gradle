@@ -150,14 +150,6 @@ sourceSets {
     }
 }
 
-tasks.register('verifyHydraulicLengthControl', JavaExec) {
-    group = 'verification'
-    description = 'Check hydraulic length-control directions, limits, and impulse caps.'
-    dependsOn tasks.named('verificationClasses')
-    classpath = sourceSets.verification.runtimeClasspath
-    mainClass = 'com.enxv.aerouniversaljoint.verification.HydraulicLengthControlRegressionCheck'
-}
-
 tasks.register('verifyCompatibilityContract', JavaExec) {
     group = 'verification'
     description = 'Check block-entity ids, persistent link tags, and the Sable 2.x minimum dependency.'
@@ -167,7 +159,6 @@ tasks.register('verifyCompatibilityContract', JavaExec) {
 }
 
 tasks.named('check').configure {
-    dependsOn tasks.named('verifyHydraulicLengthControl')
     dependsOn tasks.named('verifyCompatibilityContract')
 }
 
