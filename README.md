@@ -31,6 +31,9 @@ The mod targets Sable 2.x only. It does not include a Sable 1.x compatibility la
 
 ## Build and verification
 
+GitHub Actions (`.github/workflows/build.yml`) builds the mod on every push and pull request, and publishes the
+jar as a release `v<mod_version>` on pushes to `main` or `v*` tags.
+
 Use JDK 21.
 
 ```powershell
@@ -54,6 +57,8 @@ classes. The maintained contract is documented in
 [docs/architecture/compatibility-contract.md](docs/architecture/compatibility-contract.md).
 
 ## Architecture
+
+A full walkthrough of how the mod works, with flow diagrams, is in [docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md).
 
 The assembly-move lifecycle is documented in
 [docs/architecture/assembly-move-lifecycle.md](docs/architecture/assembly-move-lifecycle.md).
