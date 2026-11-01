@@ -56,8 +56,6 @@
   "message.aeronautics_utility_objects.same_structure": "Ends must be on different structures, or one may attach to the world.",
   "message.aeronautics_utility_objects.damping_changed": "Resistance set to %s.",
   "message.aeronautics_utility_objects.stress_output_suppressed": "Blacklisted block detected: %s. Stress output limited to 40,000 SU.",
-  "message.aeronautics_utility_objects.toolgun_outdated": "Create Aeronautics: Toolgun is outdated (%s). Update to %s or newer to support blueprint saving for Create Aeronautics: Transmission & Linkage universal joints, pneumatic links, and related blocks.",
-  "message.aeronautics_utility_objects.toolgun_missing": "Create Aeronautics: Toolgun is recommended. Install version %s or newer to support blueprint saving for Create Aeronautics: Transmission & Linkage universal joints, pneumatic links, and related blocks.",
   "tooltip.aeronautics_utility_objects.selected": "Selected: %s, %s, %s",
   "tooltip.aeronautics_utility_objects.clear_hint": "Sneak-right-click to clear the target.",
   "tooltip.aeronautics_utility_objects.head_hint": "Links structures and passes motion across them.",

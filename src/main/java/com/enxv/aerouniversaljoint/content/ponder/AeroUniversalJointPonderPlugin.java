@@ -1,16 +1,14 @@
 package com.enxv.aerouniversaljoint.content.ponder;
 
 import com.enxv.aerouniversaljoint.AeroUniversalJointMod;
-import com.simibubi.create.foundation.ponder.CreatePonderPlugin;
-import com.simibubi.create.foundation.ponder.PonderWorldBlockEntityFix;
-import net.createmod.ponder.api.level.PonderLevel;
-import net.createmod.ponder.api.registration.IndexExclusionHelper;
+import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
-import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
 import net.createmod.ponder.api.registration.SharedTextRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
 
-public class AeroUniversalJointPonderPlugin extends CreatePonderPlugin {
+// Restore callbacks run for every scene. Create already repairs multiblock controllers;
+// repeating that repair here would offset their controller positions a second time.
+public class AeroUniversalJointPonderPlugin implements PonderPlugin {
     @Override
     public String getModId() {
         return AeroUniversalJointMod.MOD_ID;
@@ -19,10 +17,6 @@ public class AeroUniversalJointPonderPlugin extends CreatePonderPlugin {
     @Override
     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> helper) {
         AeroUniversalJointPonderScenes.register(helper);
-    }
-
-    @Override
-    public void registerTags(PonderTagRegistrationHelper<ResourceLocation> helper) {
     }
 
     @Override
@@ -81,14 +75,5 @@ public class AeroUniversalJointPonderPlugin extends CreatePonderPlugin {
                 "Sneak-right-click the bearing to open its rotation bearing settings and tune Resistance.");
         helper.registerSharedText("damping_bearing_damped_bearing",
                 "It can also be used as a damped physical bearing, smoothing rotation before it reaches the shaft network.");
-    }
-
-    @Override
-    public void onPonderLevelRestore(PonderLevel ponderLevel) {
-        PonderWorldBlockEntityFix.fixControllerBlockEntities(ponderLevel);
-    }
-
-    @Override
-    public void indexExclusions(IndexExclusionHelper helper) {
     }
 }

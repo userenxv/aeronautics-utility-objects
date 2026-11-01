@@ -56,8 +56,6 @@
   "message.aeronautics_utility_objects.same_structure":"两端必须属于不同物理结构，或一端连接地面。",
   "message.aeronautics_utility_objects.damping_changed":"阻力已设为 %s。",
   "message.aeronautics_utility_objects.stress_output_suppressed":"检测到黑名单方块：%s，应力输出限制为 40000 SU。",
-  "message.aeronautics_utility_objects.toolgun_outdated":"检测到旧版 Create Aeronautics: Toolgun（%s），请更新到 %s 或更新版本，以支持 Create Aeronautics: Transmission \u0026 Linkage 的万向节、气压等蓝图保存。",
-  "message.aeronautics_utility_objects.toolgun_missing":"推荐安装 Create Aeronautics: Toolgun %s 或更新版本，以支持 Create Aeronautics: Transmission \u0026 Linkage 的万向节、气压等蓝图保存。",
   "tooltip.aeronautics_utility_objects.selected":"已选：%s，%s，%s",
   "tooltip.aeronautics_utility_objects.clear_hint":"潜行右键可清除当前目标。",
   "tooltip.aeronautics_utility_objects.head_hint":"用于连接并传递结构运动。",

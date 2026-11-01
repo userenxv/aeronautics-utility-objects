@@ -26,7 +26,6 @@ public final class AeroUniversalJointClient {
         NeoForge.EVENT_BUS.addListener(HydraulicRodTargeting::render);
         NeoForge.EVENT_BUS.addListener(HydraulicRodTargeting::onInteraction);
         NeoForge.EVENT_BUS.addListener(HydraulicRodTargeting::onClientTick);
-        ToolgunCompatibilityNotice.init();
     }
 
     private static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {

@@ -2,6 +2,7 @@ package com.enxv.aerouniversaljoint.network;
 
 import com.enxv.aerouniversaljoint.AeroUniversalJointMod;
 import com.enxv.aerouniversaljoint.content.HydraulicConnectionHeadBlockEntity;
+import com.enxv.aerouniversaljoint.content.HydraulicRodInteraction;
 import com.enxv.aerouniversaljoint.util.SubLevelReferenceHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -42,7 +43,7 @@ public record BreakHydraulicRodPayload(BlockPos pos, @Nullable UUID subLevelId) 
             Player player = context.player();
             BlockEntity blockEntity = SubLevelReferenceHelper.resolveBlockEntityFast(player.level(), payload.pos(), payload.subLevelId());
             if (!(blockEntity instanceof HydraulicConnectionHeadBlockEntity head)
-                    || !head.hasLink() || !head.isSettingsInteractionValid(player)) {
+                    || !head.hasLink() || !HydraulicRodInteraction.isTarget(player, head)) {
                 return;
             }
             head.detachLink();

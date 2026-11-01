@@ -1,7 +1,6 @@
 package com.enxv.aerouniversaljoint.content;
 
 import com.enxv.aerouniversaljoint.client.AeroUniversalJointPartials;
-import com.enxv.aerouniversaljoint.client.HydraulicRodTargeting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
@@ -112,11 +111,6 @@ public class HydraulicConnectionHeadRenderer extends SmartBlockEntityRenderer<Hy
         Vec3 end = toRenderSpace(be, otherCenter, partialTicks);
         Vec3 connection = end.subtract(start);
         double distance = connection.length();
-        Direction ownFacing = be.getBlockState().getValue(HydraulicConnectionHeadBlock.FACING);
-        Vec3 outlineRollReference = normalToWorld(be,
-                modelRollReference(ownFacing, MODEL_ROLL_REFERENCE), partialTicks);
-        HydraulicRodTargeting.register(be, ownCenter, otherCenter, outlineRollReference,
-                be.isGiantHydraulicLink() ? 0.72D : 0.28D);
 
         Vec3 direction = distance < MIN_LINK_LENGTH
                 ? getStableFallbackDirection(be, other, partialTicks)

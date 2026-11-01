@@ -189,6 +189,7 @@ public class HydraulicConnectionHeadBlockEntity extends SmartBlockEntity impleme
     public HydraulicConnectionHeadBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         HingeAssemblyOrphanCleaner.register(this);
+        HydraulicRodInteraction.register(this);
         this.effectiveExpectedLengthBlocks = AeroUniversalJointConfig.hydraulicRodMinLinkLength();
         this.setLazyTickRate(20);
     }
