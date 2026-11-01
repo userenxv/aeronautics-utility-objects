@@ -17,18 +17,20 @@ The mod targets Sable 2.x only. It does not include a Sable 1.x compatibility la
 Use JDK 21.
 
 ```powershell
-.\gradlew.bat build --offline --no-daemon --console=plain
+.\gradlew.bat build --no-daemon --console=plain
 ```
 
-`check` also runs source-level compatibility and physics-control regression checks. The adjacent
-`aeronautics_structure_tool` project is intentionally not coupled to implementation classes; verify its
-compatibility with:
+`check` also runs compatibility, physics-control, and hydraulic rod picking regression checks.
+The first build needs network access to resolve NeoForge, mappings, Sable, and Simulated.
+Use `--offline` only after those dependencies have been cached.
 
-```powershell
-.\gradlew.bat compileJava --offline --no-daemon --console=plain
-```
+The `libs/` directory contains the Create, Flywheel, Ponder, Registrate, and Sable companion
+dependencies used by this build. Sable 2.x and Simulated 1.3.x are resolved from Maven;
+obsolete Sable 1.x packages and extracted dependency resources are not part of the project.
 
-Run that command from the `aeronautics_structure_tool` project directory.
+Keep machine-specific proxy settings in your user-level Gradle configuration, not in this
+repository. IDE launch configurations, game instances, logs, build output, and local reports
+should remain untracked.
 
 ## Compatibility
 

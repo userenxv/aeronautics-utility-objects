@@ -103,14 +103,14 @@ configurations {
 }
 
 dependencies {
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'], exclude: ['sable-neoforge-*.jar'])
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly("dev.ryanhcode.sable:sable-neoforge-${minecraft_version}:${sable_api_version}") {
         transitive = false
     }
     compileOnly("dev.simulated_team.simulated:simulated-neoforge-${minecraft_version}:${simulated_api_version}") {
         transitive = false
     }
-    localRuntime fileTree(dir: 'libs', include: ['*.jar'], exclude: ['sable-neoforge-*.jar', 'create-aeronautics-bundled-*.jar'])
+    localRuntime fileTree(dir: 'libs', include: ['*.jar'])
     localRuntime("dev.ryanhcode.sable:sable-neoforge-${minecraft_version}:${sable_api_version}") {
         transitive = false
     }

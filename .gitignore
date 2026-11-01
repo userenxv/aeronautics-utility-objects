@@ -1,12 +1,19 @@
 # Gradle and IDE build outputs
 .gradle/
 .eclipse/
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
 build/
 bin/
 out/
 
 # Local run directories and logs
 run/
+run-*/
 log/
 logs/
 crash-reports/
@@ -14,7 +21,6 @@ crash-reports/
 # Generated mod artifacts
 *.jar
 !libs/*.jar
-!compile_deps/*.jar
 !gradle/wrapper/gradle-wrapper.jar
 
 # Large local scratch archives / dependency dumps
@@ -22,6 +28,17 @@ crash-reports/
 *.7z
 *.rar
 _deps/
+/compile_deps/
+/work/
+/outputs/
+/backups/
+/deploy_backups/
+/META-INF/
+/assets/
+/architectury.common.json
+/sable*.json
+/sable.accesswidener
+/LICENSE.md
 /com/
 新建文件夹/
 
@@ -31,5 +48,14 @@ Thumbs.db
 *.log
 *.tmp
 *.backup
+*.bak
+*.old
+*.hprof
+*.jfr
+hs_err_pid*
+replay_pid*
+.env
+.env.*
+!.env.example
 __pycache__/
 *.pyc
